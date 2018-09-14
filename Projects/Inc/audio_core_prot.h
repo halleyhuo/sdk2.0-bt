@@ -1,0 +1,82 @@
+///////////////////////////////////////////////////////////////////
+//
+// audio_core_prot.h
+//
+
+#include "type.h"
+
+
+typedef uint8_t			ACProtType;
+typedef uint16_t		ACProtCode;
+typedef uint32_t		ACProtParam;
+
+
+enum
+{
+	AC_PROT_TYPE_CMD = 0x01,
+	AC_PROT_TYPE_RPT,
+};
+
+
+#define Get16(buf, pos)		((uint16_t)(buf[pos] | buf[pos+1] << 8))
+#define Get32(buf, pos)		((uint32_t)(buf[pos] | buf[pos+1] << 8 | buf[pos+1] << 16 | buf[pos+1] << 24))
+
+
+enum
+{
+	AC_PROT_CODE_QUERY_SOURCE = 0x0001,
+	AC_PROT_CODE_QUERY_CPROC,
+	AC_PROT_CODE_QUERY_SINK,
+	AC_PROT_CODE_QUERY_SOURCE_EFFECTS,
+	AC_PORT_CODE_QUERY_CPROC_EFFECTS,
+	AC_PORT_CODE_QUERY_SINK_EFFECTS,
+	AC_PROT_CODE_SOURCE_NUMS,
+	AC_PROT_CODE_SOURCE_DESC,
+	AC_PORT_CODE_SOURCE_EFFECTS,
+	AC_PROT_CODE_CPROC_DESC,
+	AC_PORT_CODE_CPROC_EFFECTS,
+	AC_PROT_CODE_SINK_NUMS,
+	AC_PROT_CODE_SINK_DESC,
+	AC_PORT_CODE_SINK_EFFECTS,
+
+	AC_PROT_CODE_ALC_ENDIS = 0x0101,
+	AC_PROT_CODE_ALC_PARAMS,
+	AC_PROT_CODE_DAC_ENDIS,
+	AC_PROT_CODE_DAC_PARAMS,
+	AC_PROT_CODE_MIC_ENDIS,
+	AC_PROT_CODE_MIC_PARAMS,
+	AC_PROT_CODE_LINE1_ENDIS,
+	AC_PROT_CODE_LINE1_PARAMS,
+	AC_PROT_CODE_LINE23_ENDIS,
+	AC_PROT_CODE_LINE23_PARAMS,
+	AC_PROT_CODE_ADC_DIGITAL,
+
+	AC_PROT_CODE_EQ_ENDIS = 0x0201,
+	AC_PROT_CODE_EQ_PARAMS,
+	AC_PROT_CODE_VB_ENDIS,
+	AC_PROT_CODE_VB_PARAMS,
+	AC_PROT_CODE_3D_ENDIS,
+	AC_PROT_CODE_3D_PARAMS,
+	AC_PROT_CODE_ECHO_ENDIS,
+	AC_PROT_CODE_ECHO_PARAMS,
+	AC_PROT_CODE_REVERB_ENDIS,
+	AC_PROT_CODE_REVERB_PARAMS,
+	AC_PROT_CODE_DRC_ENDIS,
+	AC_PROT_CODE_DRC_PARAMS,
+	AC_PROT_CODE_AEC_ENDIS,
+	AC_PROT_CODE_AEC_PARAMS
+};
+
+
+typedef struct _AudioCoreProt
+{
+	ACProtType			type;
+	ACProtCode			code;
+	uint8_t				paramsNums;
+	ACProtParam			*params;
+}AudioCoreProt;
+
+int16_t AudioCoreParseCommand(uint8_t *cmd);
+
+void AudioCoreReport(ACProtCode code, ...);
+
