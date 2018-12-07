@@ -502,7 +502,7 @@ static void BtServiceEntrance(void * param)
 
 	/* Send message to main app */
 	mainHandle = GetMainMessageHandle();
-	msgSend.msgId		= MSG_SERVICE_CREATED;
+	msgSend.msgId		= MSG_SERVICE_START;
 	msgSend.msgParams	= (void *)MSG_PARAM_BLUETOOTH_SERVICE;
 	MessageSend(mainHandle, &msgSend);
 #if 0

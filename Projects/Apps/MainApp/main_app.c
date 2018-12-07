@@ -102,7 +102,7 @@ static void ServiceCreated(uint16_t msgParams)
 	switch(msgParams)
 	{
 		case MSG_PARAM_WIFI_AUDIO_PLAY:
-			WifiAudioPlayStart();
+//			WifiAudioPlayStart();
 			break;
 
 		case MSG_PARAM_DEVICE_SERVICE_ID:
@@ -117,7 +117,7 @@ static void ServiceCreated(uint16_t msgParams)
 			break;
 
 		case MSG_PARAM_WIFI_SERVICE:
-			WifiServiceStart();
+//			WifiServiceStart();
 			break;
 
 		case MSG_PARAM_MEDIA_SERVICE:
@@ -145,7 +145,7 @@ static void ServiceStarted(uint16_t msgParams)
 			break;
 
 		case MSG_PARAM_WIFI_SERVICE:
-			WxcloudServiceStart();
+//			WxcloudServiceStart();
 			break;
 
 		case MSG_PARAM_MEDIA_SERVICE:
@@ -160,12 +160,15 @@ static MessageId KeyEventConvert(uint16_t msgParams)
 {
 	KeyEvent		keyEvent;
 	KeyValue		keyValue;
+	MessageId		msgId = 0xFFFF;
 
 	keyEvent = (msgParams & 0xFF00) >> 8;
 	keyValue = (msgParams & 0x00FF);
 
 	DBG("keyEvent = 0x%02x, keyValue = 0x%02x\n", keyEvent, keyValue);
-	return GetWifiAudioKeyMap(keyValue, keyEvent);
+
+//	msgId = GetWifiAudioKeyMap(keyValue, keyEvent);
+	return msgId;
 }
 
 static void MainAppTaskEntrance(void * param)
@@ -208,7 +211,7 @@ static void MainAppTaskEntrance(void * param)
 					*/
 				}
 				break;
-
+/*
 			case MSG_WXCLOUD_EVENT:
 				{
 					DBG("[MAIN_APP]: MSG_WXCLOUD_EVENT.\n");
@@ -253,6 +256,7 @@ static void MainAppTaskEntrance(void * param)
 					MessageSend(msgHandle, &msgSend);
 				}
 				break;
+*/
 		}
 	}
 }

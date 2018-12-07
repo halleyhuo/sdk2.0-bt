@@ -29,7 +29,7 @@
 void EnterMode(AppMode mode)
 {
 //	WifiAudioPlayStart();
-	WifiAudioPlayCreate(GetMainMessageHandle());
+//	WifiAudioPlayCreate(GetMainMessageHandle());
 }
 
 /**

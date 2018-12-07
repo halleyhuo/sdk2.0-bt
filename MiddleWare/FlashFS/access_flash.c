@@ -79,6 +79,7 @@ int32_t InitFlashFS(void)
 /*
  * Net infor record
  */
+/*
 extern struct AP_RECORD *pApJoiningRecord;
 void BurnNetRecord(void)
 {
@@ -103,7 +104,7 @@ void ReadNetRecord(void)
 	Fread(pApJoiningRecord, sizeof(struct AP_RECORD), 1, pNetRecordFile);
 	Fclose( pNetRecordFile );
 }
-
+*/
 /*
  * volume infor record
  */
@@ -128,6 +129,7 @@ void ReadNetRecord(void)
 /*
  * Wifi Play infor record
  */
+/*
 extern PLAY_RECORD *WifiaudioPlayRecord;
 void ReadPlayRecord(void)
 {
@@ -155,7 +157,7 @@ void ErasePlayRecord(void)
 	Fwrite(WifiaudioPlayRecord, sizeof(PLAY_RECORD), 1, pPlayRecordFile);
 	Fclose( pPlayRecordFile );
 }
-
+*/
 /*
  * Device infor record
  */
@@ -214,6 +216,7 @@ void BurnWeixinRecord(void)
 /*
  * wx speech id record
  */
+/*
 extern WX_SPEECH_RECORD *pWxSpeechRecord;
 extern WX_SPEECH_ID_RECORD *pWxSpeechIdRecord;
 void BurnWxSpeechRecord(void)
@@ -245,7 +248,7 @@ void ReadWxSpeechIdRecord(void)
 	Fread(pWxSpeechIdRecord, sizeof(WX_SPEECH_ID_RECORD), 1, pWxSpeechIdFile);
 	Fclose( pWxSpeechIdFile );
 }
-
+*/
 /*
  * Media play infor record
  */
